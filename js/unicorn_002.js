@@ -53,6 +53,7 @@ $(document).ready(function(){
 	// === Resize window related === //
 	$(window).resize(function()
 	{
+	    console.log($(window).width());
 		if($(window).width() > 479)
 		{
 			ul.css({'display':'block'});	
