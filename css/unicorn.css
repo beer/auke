@@ -1387,7 +1387,7 @@ form {
 	}
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) {
 	#header h1 {
 		top: 3px;
 	}
@@ -1457,7 +1457,7 @@ form {
 	}
 
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 	body {
 		padding: 0 !important;
 	}
@@ -1470,7 +1470,8 @@ form {
 		display: none;
 	}
 }
-@media (min-width: 768px) and (max-width: 979px) {
+/*@media (min-width: 767px) and (max-width: 979px) {*/
+@media (max-width: 767px) {
 	[class*="span"], .row-fluid [class*="span"] {
 		display: block;
 		float: none;
@@ -1514,17 +1515,3 @@ button .close{
 	list-style: none outside none;
 	margin:3px;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
