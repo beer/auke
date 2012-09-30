@@ -623,7 +623,7 @@ a:hover {
 	margin-top: 0;
 	margin-bottom: 0;
 }
-.widget-title, .modal-header, .table th, div.dataTables_wrapper .ui-widget-header {
+.widget-title, .table th, div.dataTables_wrapper .ui-widget-header {
 	background-color: #efefef;
 	background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#fdfdfd), to(#eaeaea));
 	background-image: -webkit-linear-gradient(top, #fdfdfd 0%, #eaeaea 100%);
@@ -1248,8 +1248,9 @@ div.dataTables_wrapper .ui-widget-header {
 	z-index: 999 !important;
 }
 .modal-header {
-	height: auto;
+	height: 24px;
 	padding: 8px 15px 5px;
+	border:0px;
 }
 .modal-header h3 {
 	font-size: 12px;
@@ -1510,12 +1511,26 @@ form {
 button .close{
 	margin:5px;
 	}
-.modal-body dropdown-menu{
-	min-width:0px;
-	}
 .empty {
 	height:50px;
 	}
-.modal .btn-group > .btn:active, .modal .btn-group > .btn .active {
-	background:#f0cd4c;	
+.btn.active, .btn:active {
+	background-color:#F8C677;
+	}
+.pluss .label {
+	font-size: 18px;
+    font-weight: normal;
+    line-height: 22px;
+	}	
+.modal-body{
+	overflow-x:hidden;
+	}
+.modal-body dropdown-menu{
+	min-width:0px;
+	}
+.modal-body .btn-toolbar {
+    margin: 9px 0px;
+    position: relative;
+    top: -35px;
+    left: 64px;
 }
