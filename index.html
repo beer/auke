@@ -192,18 +192,20 @@
                 $.each(this.items, function(i, item) {
                     
                     cheese = '';
-                    if (item.cheese) {
+                    if (item && item.cheese) {
                         cheese = 
 			    		'<div class="btn-group">'+
 			    			 '<button class="btn btn-mini cheese active">起司</button>'+
 			    		'</div>';
                     }
+                    if (item) {
                     target.append(
-                        '<li>' + 
+                        '<li id="'+ item.id +'">' + 
                         '<span class="name"><strong>' + item.name + '</strong></span>' +
                         cheese +
                         '<a href="#" class="right"><i class="icon-trash"></i></a>' +
                         '</li>');
+                    }
                 });
             },
             find : function(id) {
@@ -218,7 +220,34 @@
             serial: function() {
                 return this._serial++;
             },
+            delete: function(id) {
+            	var new_index = null;
+            	for (var i = 0 ; i < items.length; i++) {
+                    if (items[i].id == id) {
+                        //console.log('return: ' + JSON.stringify(items[i]));
+                        delete items[i];
+                        new_index = i;
+                    }
+                    if (new_index) {
+                    	items[new_index] = items[i];
+                    	new_index++;
+                    }
+                }
+                if (new_index) {
+                	items.length = new_index;
+                }
+            }
         };
+        
+        order.items.push({name:'a'});
+        order.items.push({name:'b'});
+        order.items.push({name:'c'});
+        order.list();
+        order.delete(1);
+        order.list();
+        order.delete(3);
+        order.list();
+
 
         var count = 0;
         $('.pluss').click(function() {
@@ -310,6 +339,14 @@
 
             $('.other .btn').live('click', function() {
 				$(this).remove();
+            });
+            
+            
+            $('.icon-trash').live('click', function(){
+            	var cancle = $(this).parent().parent();
+            	var id = cancle.attr('id');
+            	order.delete(id);
+            	order.refresh();
             });
 
             $('#order_submit').click(function() {
