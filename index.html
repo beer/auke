@@ -208,8 +208,8 @@
             },
             find : function(id) {
                 //console.log('find: ' + id);
-                for (var i = 0 ; i < items.length; i++) {
-                    if (items[i].id == id) {
+                for (var i = 0 ; i < this.items.length; i++) {
+                    if (this.items[i].id == id) {
                         //console.log('return: ' + JSON.stringify(items[i]));
                         return items[i];
                     }
@@ -218,6 +218,22 @@
             serial: function() {
                 return this._serial++;
             },
+            delete: function(id) {
+                for (var i = 0 ; i < this.items.length; i++) {
+                    if (this.items[i].id == id) {
+                        //console.log('return: ' + JSON.stringify(items[i]));
+                        delete this.items[i];
+                    }
+                }
+                // 重組陣列
+                var items_new = [];
+                for (var i = 0 ; i < this.items.length; i++) {
+                    if (this.items[i]) {
+                        items_new.push(this.items[i]);
+                    }
+                }
+                this.items = items_new;
+            }
         };
 
         var count = 0;
