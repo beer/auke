@@ -63,7 +63,7 @@
 								<div class="row-fluid">
 								<div class="span12">
 									<ul class="site-stats">
-										<li class="span4"><a class="pluss"><i class="icon-tag"></i><span class="name">咖牛</span><span class="label label-important sum">0</span></a><a href="#myModal" role="button" class="send" data-toggle="modal"><i class="icon-edit"></i></a></li>
+										<li class="span4"><a class="pluss"><i class="icon-tag"></i><span class="name" data-name="curry beef">咖牛</span><span class="label label-important sum">0</span></a><a href="#myModal" role="button" class="send" data-toggle="modal"><i class="icon-edit"></i></a></li>
 										<li class="span4"><a class="pluss"><i class="icon-tag"></i><span class="name">泡牛</span><span class="label label-important sum">0</span></a><a href="#myModal" role="button" class="send" data-toggle="modal"><i class="icon-edit"></i></a></li>
 										<li class="span4"><a class="pluss"><i class="icon-tag"></i><span class="name">壽牛</span><span class="label label-important sum">0</span></a><a href="#myModal" role="button" class="send" data-toggle="modal"><i class="icon-edit"></i></a></li>
 									</ul>
@@ -172,36 +172,51 @@
 		<script src="js/unicorn_002.js"></script>
 		<script src="js/unicorn.js"></script>
 		<script src="js/bootstrap-modal.js"></script>
-			<script>
-				count = 0;
-				$('.pluss').click(function() {
-					focus = $(this);
-					focus.find('.sum').text(parseInt(focus.find('.sum').text()) + 1);
-					$(this).css('color','#08c');
+		<script>
+            var order = {
+                items : [],
+                list: function() {
+                    $.each(order.items, function(i, item) {
+                        console.log(item.name);
+                    });
+                }
+            };
 
-					count++;
-					$('#sum').text(count);
-				});
-				
-								
-				$('.send').click(function(){
-					var focus = $(this).prev().find('.name').text();
-					var sum = parseInt($(this).prev().find('.sum').text());
-					var modal = $('.modal-body');
-					
-					if (sum === 0) {
-						return false;
-					}
-					
-					console.log(focus);
-					console.log(sum);
-					
-					modal.html('');
-					var i;
-					for (i = 0; i < sum ; i++) {
-						modal.append('<label>'+ focus + '</label>')}	
-					});
-			</script>
+	    	var count = 0;
+	    	$('.pluss').click(function() {
+	    		var focus = $(this);
+                var name = focus.find('.name').text();
+
+                order.items.push({name: name});
+
+	    		focus.find('.sum').text(parseInt(focus.find('.sum').text()) + 1);
+	    		$(this).css('color','#08c');
+
+	    		count++;
+	    		$('#sum').text(count);
+
+                order.list();
+	    	});
+	    	
+	    					
+	    	$('.send').click(function(){
+	    		var focus = $(this).prev().find('.name').text();
+	    		var sum = parseInt($(this).prev().find('.sum').text());
+	    		var modal = $('.modal-body');
+	    		
+	    		if (sum === 0) {
+	    			return false;
+	    		}
+	    		
+	    		console.log(focus);
+	    		console.log(sum);
+	    		
+	    		modal.html('');
+	    		var i;
+	    		for (i = 0; i < sum ; i++) {
+	    			modal.append('<label>'+ focus + '</label>')}	
+	    		});
+		</script>
 
 
 <ul class="typeahead dropdown-menu"></ul></body></html>
