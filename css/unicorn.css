@@ -214,7 +214,7 @@ a:hover {
 	background-image: -o-linear-gradient(top, #FFFFFF 0%, #EEEEEE 100%);
 	background-image: linear-gradient(top, #FFFFFF 0%, #EEEEEE 100%);
     border-top-left-radius: 8px;
-
+	 /*height: 140px;*/
     position: abslute;
     width: 100%;
     margin-top: -38px;
@@ -1331,7 +1331,7 @@ form {
 	}
 	#content-header {
 		margin-top: 0;
-		height: 140px;
+		/*height: 140px;*/
 		text-align: center;
 	}
 	#content-header h1, #content-header .btn-group {
@@ -1495,12 +1495,11 @@ form {
 /*set*/
 .edit-btn{
 	float:right;
-	border-left:1px solid #ddd;
 	min-height: 26px;
 	padding-left: 13px;
 	}
 .order{
-	font-size: 20px;
+	font-size: 18px;
 	}
 .send{
 	float:right;
@@ -1511,7 +1510,12 @@ form {
 button .close{
 	margin:5px;
 	}
-.pop li {
-	list-style: none outside none;
-	margin:3px;
+.modal-body dropdown-menu{
+	min-width:0px;
 	}
+.empty {
+	height:50px;
+	}
+.modal .btn-group > .btn:active, .modal .btn-group > .btn .active {
+	background:#f0cd4c;	
+}
