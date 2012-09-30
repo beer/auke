@@ -132,14 +132,8 @@
 							</div>
 							<div class="widget-content">
 								<div class="row-fluid">
-									<ul class="site-stats">
-										<li><span class="name"><strong>壽牛</strong></span><a href="#myModal" role="button" class="send" data-toggle="modal"><i class="icon-edit"></i></a></li>
-										<li><span class="name"><strong>咖牛</strong></span><a href="#myModal" role="button" class="send" data-toggle="modal"><i class="icon-edit"></i></a></li>
-										<li><span class="name"><strong>泡牛</strong></span><a href="#myModal" role="button" class="send" data-toggle="modal"><i class="icon-edit"></i></a></li>
+									<ul id="order-list" class="site-stats">
 									</ul>
-											
-											
-
 								</div>
 								<div class="modal hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-header">
@@ -178,7 +172,6 @@
             items.push = function(item) {
                 item.id = order.serial();
                 console.log('push: ' + JSON.stringify(item));
-                //return Array.prototype.push.apply(this,item);
                 return Array.prototype.push.apply(this, arguments);
             }
 
@@ -190,12 +183,34 @@
                 $.each(this.items, function(i, item) {
                     console.log(JSON.stringify(item));
                 });
+                order.refresh();
+            },
+            refresh: function() {
+                var target = $('#order-list');
+                target.html('');
+                var cheese = '';
+                $.each(this.items, function(i, item) {
+                    
+                    cheese = '';
+                    if (item.cheese) {
+                        cheese = 
+			    		'<div class="btn-group">'+
+			    			 '<button class="btn btn-mini cheese active">起司</button>'+
+			    		'</div>';
+                    }
+                    target.append(
+                        '<li>' + 
+                        '<span class="name"><strong>' + item.name + '</strong></span>' +
+                        cheese +
+                        '<a href="#" class="right"><i class="icon-trash"></i></a>' +
+                        '</li>');
+                });
             },
             find : function(id) {
-                console.log('find: ' + id);
+                //console.log('find: ' + id);
                 for (var i = 0 ; i < items.length; i++) {
                     if (items[i].id == id) {
-                        console.log('return: ' + JSON.stringify(items[i]));
+                        //console.log('return: ' + JSON.stringify(items[i]));
                         return items[i];
                     }
                 }
@@ -303,6 +318,11 @@
                 $.each(details, function(i, detail) {
                     that = $(detail);
                     item = order.find(that.attr('id'));
+                    delete(item.rice_plus);
+                    delete(item.rice_minus);
+                    delete(item.soy_plus);
+                    delete(item.soy_minus);
+                    delete(item.cheese);
                     if (that.find('.rice_plus').hasClass('active')) {
                         item.rice_plus = true;
                     }
@@ -318,7 +338,7 @@
                     if (that.find('.cheese').hasClass('active')) {
                         item.cheese = true;
                     }
-                    console.log(item);
+                    order.list();
                 });
             });
 		
