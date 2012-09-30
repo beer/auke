@@ -210,8 +210,8 @@
             },
             find : function(id) {
                 //console.log('find: ' + id);
-                for (var i = 0 ; i < items.length; i++) {
-                    if (items[i].id == id) {
+                for (var i = 0 ; i < this.items.length; i++) {
+                    if (this.items[i].id == id) {
                         //console.log('return: ' + JSON.stringify(items[i]));
                         return items[i];
                     }
@@ -221,24 +221,16 @@
                 return this._serial++;
             },
             delete: function(id) {
-            	var new_index = null;
-            	for (var i = 0 ; i < items.length; i++) {
-                    if (items[i].id == id) {
+                for (var i = 0 ; i < this.items.length; i++) {
+                    if (this.items[i].id == id) {
                         //console.log('return: ' + JSON.stringify(items[i]));
-                        delete items[i];
-                        new_index = i;
+                        this.items.splice(i,1);
                     }
-                    if (new_index) {
-                    	items[new_index] = items[i];
-                    	new_index++;
-                    }
-                }
-                if (new_index) {
-                	items.length = new_index;
                 }
             }
         };
         
+/*
         order.items.push({name:'a'});
         order.items.push({name:'b'});
         order.items.push({name:'c'});
@@ -247,6 +239,11 @@
         order.list();
         order.delete(3);
         order.list();
+        order.items.push({name:'a'});
+        order.items.push({name:'b'});
+        order.items.push({name:'c'});
+        order.list();
+ */
 
 
         var count = 0;
