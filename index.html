@@ -221,7 +221,7 @@
             serial: function() {
                 return this._serial++;
             },
-            delete: function(id) {
+            delete_item: function(id) {
                 for (var i = 0 ; i < this.items.length; i++) {
                     if (this.items[i].id == id) {
                         //console.log('return: ' + JSON.stringify(items[i]));
@@ -343,7 +343,7 @@
             $('.icon-trash').live('click', function(){
             	var cancle = $(this).parent().parent();
             	var id = cancle.attr('id');
-            	order.delete(id);
+                order.delete_item(id);
             	order.refresh();
             });
 
