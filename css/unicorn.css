@@ -1243,6 +1243,7 @@ div.dataTables_wrapper .ui-widget-header {
 }
 .modal {
 	z-index: 99999 !important;
+    
 }
 .modal-backdrop {
 	z-index: 999 !important;
@@ -1521,16 +1522,40 @@ button .close{
 	font-size: 18px;
     font-weight: normal;
     line-height: 22px;
-	}	
+	}
+.modal{
+    width:700px;
+    }
 .modal-body{
 	overflow-x:hidden;
 	}
-.modal-body dropdown-menu{
-	min-width:0px;
+.modal-body label{
+	display:inline;
+	}
+		
+.modal-body br{
+	line-height:40px;
 	}
 .modal-body .btn-toolbar {
     margin: 9px 0px;
-    position: relative;
-    top: -35px;
-    left: 64px;
+    display:inline;
 }
+.modal-body dropdown-menu{
+	min-width:0px;
+	dropdown-menu {
+    position: absolute;
+    top: 0px;
+    left: 50px;
+    z-index: 1000;
+    display: none;
+    float: left;
+    padding: 5px 0px;
+    margin: 2px 0px 0px;
+    list-style: none outside none;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    background-clip: padding-box;
+	}
+	
